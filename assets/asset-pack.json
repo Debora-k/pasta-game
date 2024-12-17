@@ -1,0 +1,369 @@
+{
+    "section1": {
+        "files": [
+            {
+                "url": "assets/sliced-dough/1.png",
+                "type": "image",
+                "key": "_0"
+            },
+            {
+                "url": "assets/sliced-dough/2.png",
+                "type": "image",
+                "key": "_1"
+            },
+            {
+                "url": "assets/sliced-dough/3.png",
+                "type": "image",
+                "key": "_2"
+            },
+            {
+                "url": "assets/sliced-dough/4.png",
+                "type": "image",
+                "key": "_3"
+            },
+            {
+                "url": "assets/kneading-sprites/1.png",
+                "type": "image",
+                "key": "1"
+            },
+            {
+                "url": "assets/kneading-sprites/10.png",
+                "type": "image",
+                "key": "10"
+            },
+            {
+                "url": "assets/kneading-sprites/11.png",
+                "type": "image",
+                "key": "11"
+            },
+            {
+                "url": "assets/kneading-sprites/12.png",
+                "type": "image",
+                "key": "12"
+            },
+            {
+                "url": "assets/kneading-sprites/13.png",
+                "type": "image",
+                "key": "13"
+            },
+            {
+                "url": "assets/kneading-sprites/14.png",
+                "type": "image",
+                "key": "14"
+            },
+            {
+                "url": "assets/kneading-sprites/15.png",
+                "type": "image",
+                "key": "15"
+            },
+            {
+                "url": "assets/kneading-sprites/16.png",
+                "type": "image",
+                "key": "16"
+            },
+            {
+                "url": "assets/kneading-sprites/2.png",
+                "type": "image",
+                "key": "2"
+            },
+            {
+                "url": "assets/kneading-sprites/3.png",
+                "type": "image",
+                "key": "3"
+            },
+            {
+                "url": "assets/kneading-sprites/4.png",
+                "type": "image",
+                "key": "4"
+            },
+            {
+                "url": "assets/kneading-sprites/5.png",
+                "type": "image",
+                "key": "5"
+            },
+            {
+                "url": "assets/kneading-sprites/6.png",
+                "type": "image",
+                "key": "6"
+            },
+            {
+                "url": "assets/kneading-sprites/7.png",
+                "type": "image",
+                "key": "7"
+            },
+            {
+                "url": "assets/kneading-sprites/8.png",
+                "type": "image",
+                "key": "8"
+            },
+            {
+                "url": "assets/kneading-sprites/9.png",
+                "type": "image",
+                "key": "9"
+            },
+            {
+                "url": "assets/sprites/basil.png",
+                "type": "image",
+                "key": "basil"
+            },
+            {
+                "url": "assets/chopping-board.png",
+                "type": "image",
+                "key": "chopping-board"
+            },
+            {
+                "url": "assets/sprites/chopping-board.png",
+                "type": "image",
+                "key": "chopping-board_1"
+            },
+            {
+                "url": "assets/levels/chopping-board.png",
+                "type": "image",
+                "key": "chopping-board_2"
+            },
+            {
+                "url": "assets/clipboard.png",
+                "type": "image",
+                "key": "clipboard"
+            },
+            {
+                "url": "assets/dough.png",
+                "type": "image",
+                "key": "dough"
+            },
+            {
+                "url": "assets/egg.png",
+                "type": "image",
+                "key": "egg"
+            },
+            {
+                "url": "assets/egg-carton.png",
+                "type": "image",
+                "key": "egg-carton"
+            },
+            {
+                "url": "assets/egg-outline.png",
+                "type": "image",
+                "key": "egg-outline"
+            },
+            {
+                "url": "assets/eggs.png",
+                "type": "image",
+                "key": "eggs"
+            },
+            {
+                "url": "assets/sprites/eggs.png",
+                "type": "image",
+                "key": "eggs_1"
+            },
+            {
+                "url": "assets/farfalle.png",
+                "type": "image",
+                "key": "farfalle"
+            },
+            {
+                "url": "assets/fettuccine.png",
+                "type": "image",
+                "key": "fettuccine"
+            },
+            {
+                "url": "assets/flour.png",
+                "type": "image",
+                "key": "flour"
+            },
+            {
+                "url": "assets/flour-egg-1.png",
+                "type": "image",
+                "key": "flour-egg-1"
+            },
+            {
+                "url": "assets/flour-egg-2.png",
+                "type": "image",
+                "key": "flour-egg-2"
+            },
+            {
+                "url": "assets/sprites/flour-jar.png",
+                "type": "image",
+                "key": "flour-jar"
+            },
+            {
+                "url": "assets/flour-particle.png",
+                "type": "image",
+                "key": "flour-particle"
+            },
+            {
+                "url": "assets/frame.png",
+                "type": "image",
+                "key": "frame"
+            },
+            {
+                "url": "assets/sprites/knife.png",
+                "type": "image",
+                "key": "knife"
+            },
+            {
+                "url": "assets/lasagna.png",
+                "type": "image",
+                "key": "lasagna"
+            },
+            {
+                "url": "assets/level-1-bg.png",
+                "type": "image",
+                "key": "level-1-bg"
+            },
+            {
+                "url": "assets/lock.png",
+                "type": "image",
+                "key": "lock"
+            },
+            {
+                "url": "assets/napkin.png",
+                "type": "image",
+                "key": "napkin"
+            },
+            {
+                "url": "assets/sprites/olive-oil.png",
+                "type": "image",
+                "key": "olive-oil"
+            },
+            {
+                "url": "assets/penne.png",
+                "type": "image",
+                "key": "penne"
+            },
+            {
+                "url": "assets/fonts/Pixelify-Sans/static/PixelifySans-Bold.ttf",
+                "format": "truetype",
+                "descriptors": {},
+                "type": "font",
+                "key": "PixelifySans-Bold"
+            },
+            {
+                "url": "assets/fonts/Pixelify-Sans/static/PixelifySans-Medium.ttf",
+                "format": "truetype",
+                "descriptors": {},
+                "type": "font",
+                "key": "PixelifySans-Medium"
+            },
+            {
+                "url": "assets/fonts/Pixelify-Sans/static/PixelifySans-Regular.ttf",
+                "format": "truetype",
+                "descriptors": {},
+                "type": "font",
+                "key": "PixelifySans-Regular"
+            },
+            {
+                "url": "assets/fonts/Pixelify-Sans/static/PixelifySans-SemiBold.ttf",
+                "format": "truetype",
+                "descriptors": {},
+                "type": "font",
+                "key": "PixelifySans-SemiBold"
+            },
+            {
+                "url": "assets/plank.png",
+                "type": "image",
+                "key": "plank"
+            },
+            {
+                "url": "assets/ravioli.png",
+                "type": "image",
+                "key": "ravioli"
+            },
+            {
+                "url": "assets/rigatoni.png",
+                "type": "image",
+                "key": "rigatoni"
+            },
+            {
+                "url": "assets/rolling-pin.png",
+                "type": "image",
+                "key": "rolling-pin"
+            },
+            {
+                "url": "assets/sprites/salt-jar.png",
+                "type": "image",
+                "key": "salt-jar"
+            },
+            {
+                "url": "assets/sprites/semolina-flour-jar.png",
+                "type": "image",
+                "key": "semolina-flour-jar"
+            },
+            {
+                "url": "assets/spaghetti.png",
+                "type": "image",
+                "key": "spaghetti"
+            },
+            {
+                "url": "assets/spiral.png",
+                "type": "image",
+                "key": "spiral"
+            },
+            {
+                "url": "assets/kneading-sprites/sprite.png",
+                "frameConfig": {
+                    "frameWidth": 32,
+                    "frameHeight": 32,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "sprite"
+            },
+            {
+                "url": "assets/ss.png",
+                "type": "image",
+                "key": "ss"
+            },
+            {
+                "url": "assets/sprites/stopwatch.png",
+                "type": "image",
+                "key": "stopwatch"
+            },
+            {
+                "url": "assets/tissues.png",
+                "type": "image",
+                "key": "tissues"
+            },
+            {
+                "url": "assets/title-bg.png",
+                "type": "image",
+                "key": "title_bg"
+            },
+            {
+                "url": "assets/sprites/tomatoes.png",
+                "type": "image",
+                "key": "tomatoes"
+            },
+            {
+                "url": "assets/wet-dough-1.png",
+                "type": "image",
+                "key": "wet-dough-1"
+            },
+            {
+                "url": "assets/wet-dough-2.png",
+                "type": "image",
+                "key": "wet-dough-2"
+            },
+            {
+                "url": "assets/sprites/whisk.png",
+                "type": "image",
+                "key": "whisk"
+            },
+            {
+                "url": "assets/whisked-eggs.png",
+                "type": "image",
+                "key": "whisked-eggs"
+            }
+        ]
+    },
+    "meta": {
+        "app": "Phaser Editor 2D - Asset Pack Editor",
+        "contentType": "phasereditor2d.pack.core.AssetContentType",
+        "url": "https://phasereditor2d.com",
+        "version": 2,
+        "showAllFilesInBlocks": false
+    }
+}
