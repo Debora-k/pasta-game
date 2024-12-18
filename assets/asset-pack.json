@@ -109,7 +109,7 @@
             {
                 "url": "assets/chopping-board.png",
                 "type": "image",
-                "key": "chopping-board"
+                "key": "chopping_board"
             },
             {
                 "url": "assets/sprites/chopping-board.png",
@@ -184,7 +184,7 @@
             {
                 "url": "assets/sprites/flour-jar.png",
                 "type": "image",
-                "key": "flour-jar"
+                "key": "flour_jar"
             },
             {
                 "url": "assets/flour-particle.png",
@@ -209,7 +209,7 @@
             {
                 "url": "assets/level-1-bg.png",
                 "type": "image",
-                "key": "level-1-bg"
+                "key": "level_bg"
             },
             {
                 "url": "assets/lock.png",
@@ -224,7 +224,7 @@
             {
                 "url": "assets/sprites/olive-oil.png",
                 "type": "image",
-                "key": "olive-oil"
+                "key": "olive_oil"
             },
             {
                 "url": "assets/penne.png",
@@ -287,7 +287,7 @@
             {
                 "url": "assets/sprites/semolina-flour-jar.png",
                 "type": "image",
-                "key": "semolina-flour-jar"
+                "key": "semolina_flour_jar"
             },
             {
                 "url": "assets/spaghetti.png",

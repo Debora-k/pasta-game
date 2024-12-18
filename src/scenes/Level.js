@@ -36,7 +36,10 @@ export default class Level extends Phaser.Scene {
 		const fettuccine = this.add.image(180, 485, "fettuccine");
 		fettuccine.setScale(0.2, 0.2);
 		fettuccine.setInteractive().on('pointerover', () => this.onHover())
-		    .on('pointerout', () => this.onHoverEnd());
+		    .on('pointerout', () => this.onHoverEnd())
+			.on('pointerup', () => {
+				this.scene.start('Level1');
+			});
 
 		const plank_1 = this.add.image(180, 620, "plank");
 		plank_1.setScale(0.15, 0.15);
@@ -116,6 +119,7 @@ export default class Level extends Phaser.Scene {
 	lasagna;
 	/** @type {Phaser.GameObjects.Image} */
 	plank_4;
+
 
 
 
