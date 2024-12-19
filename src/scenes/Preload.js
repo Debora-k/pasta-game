@@ -71,11 +71,14 @@ export default class Preload extends Phaser.Scene {
 
 			this.progressBar.width = progress * width;
 		});
+
+		
 	}
 
 	create() {
 
 		this.scene.start("Level");
+
 	}
 
 	/* END-USER-CODE */

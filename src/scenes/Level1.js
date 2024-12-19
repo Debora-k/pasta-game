@@ -18,6 +18,7 @@ export default class Level1 extends Phaser.Scene {
 
 	/** @returns {void} */
 	editorCreate() {
+		const textStyle = {"fontFamily": "PixelifySans-Regular", "fontSize": "23px", "color":"black", "align": "left", wordWrap:{width:220, useAdvancedWrap:true}};
 		const level_bg = this.add.image(640, 360, "level_bg");
 		level_bg.setScale(0.5, 0.5);
 		level_bg.setInteractive(new Phaser.Geom.Rectangle(0, 0, 250, 250), Phaser.Geom.Rectangle.Contains);
@@ -66,35 +67,36 @@ export default class Level1 extends Phaser.Scene {
 		const clipboard = this.add.image(1090, 430, "clipboard");
 		clipboard.setScale(0.25, 0.25);
 		
-		const clipboard_list1 = this.add.text(1105, 330, "", {});
-		clipboard_list1.setOrigin(0.5, 0.5);
-		clipboard_list1.text = "Add 100g flour"
-		clipboard_list1.setStyle({"fontFamily": "PixelifySans-Regular", "fontSize": "23px", "color":"black"});
+		const rect1 = this.add.rectangle(985, 330, 20, 20, 0x808080, 1);
 
-		const clipboard_list2 = this.add.text(1105, 380, "", {});
-		clipboard_list2.setOrigin(0.5, 0.5);
-		clipboard_list2.text = "Crack 2 eggs"
-		clipboard_list2.setStyle({"fontFamily": "PixelifySans-Regular", "fontSize": "23px", "color":"black"});
+		const clipboard_list1 = this.add.text(1000, 330, "Add 100g flour", {});
+		clipboard_list1.setOrigin(0, 0.5);
+		clipboard_list1.setStyle(textStyle);
 
-		const clipboard_list3 = this.add.text(1105, 430, "", {});
-		clipboard_list3.setOrigin(0.5, 0.5);
-		clipboard_list3.text = "Whisk the eggs"
-		clipboard_list3.setStyle({"fontFamily": "PixelifySans-Regular", "fontSize": "23px", "color":"black"});
+		const rect2 = this.add.rectangle(985, 380, 20, 20, 0x808080, 1);
+		const clipboard_list2 = this.add.text(1000, 380, "Crack 2 eggs", {});
+		clipboard_list2.setOrigin(0, 0.5);
+		clipboard_list2.setStyle(textStyle);
 
-		const clipboard_list4 = this.add.text(1105, 480, "", {});
-		clipboard_list4.setOrigin(0.5, 0.5);
-		clipboard_list4.text = "Knead the dough"
-		clipboard_list4.setStyle({"fontFamily": "PixelifySans-Regular", "fontSize": "23px", "color":"black"});
+		const rect3 = this.add.rectangle(985, 430, 20, 20, 0x808080, 1);
+		const clipboard_list3 = this.add.text(1000, 430, "Whisk the eggs", {});
+		clipboard_list3.setOrigin(0, 0.5);
+		clipboard_list3.setStyle(textStyle);
+
+		const rect4 = this.add.rectangle(985, 480, 20, 20, 0x808080, 1);
+		const clipboard_list4 = this.add.text(1000, 480, "Knead the dough", {});
+		clipboard_list4.setOrigin(0, 0.5);
+		clipboard_list4.setStyle(textStyle);
 		
-		const clipboard_list5 = this.add.text(1105, 530, "", {});
-		clipboard_list5.setOrigin(0.5, 0.5);
-		clipboard_list5.text = "Rest the dough for 30 min"
-		clipboard_list5.setStyle({"fontFamily": "PixelifySans-Regular", "fontSize": "23px", "color":"black"});
+		const rect5 = this.add.rectangle(985, 530, 20, 20, 0x808080, 1);
+		const clipboard_list5 = this.add.text(1000, 530, "Rest the dough for 30 min", {});
+		clipboard_list5.setOrigin(0, 0.5);
+		clipboard_list5.setStyle(textStyle);
 
-		const clipboard_list6 = this.add.text(1105, 580, "", {});
-		clipboard_list6.setOrigin(0.5, 0.5);
-		clipboard_list6.text = "Cut the dough"
-		clipboard_list6.setStyle({"fontFamily": "PixelifySans-Regular", "fontSize": "23px", "color":"black"});
+		const rect6 = this.add.rectangle(985, 580, 20, 20, 0x808080, 1);
+		const clipboard_list6 = this.add.text(1000, 580, "Cut the dough", {});
+		clipboard_list6.setOrigin(0, 0.5);
+		clipboard_list6.setStyle(textStyle);
 
 		this.level_bg = level_bg;
 		this.eggs_1 = eggs_1;
@@ -109,6 +111,12 @@ export default class Level1 extends Phaser.Scene {
 		this.basil = basil;
 		this.flour_jar = flour_jar;
 		this.clipboard = clipboard;
+		this.rect1 = rect1;
+		this.rect2 = rect2;
+		this.rect3 = rect3;
+		this.rect4 = rect4;
+		this.rect5 = rect5;
+		this.rect6 = rect6;
 
 
 		this.events.emit("scene-awake");
