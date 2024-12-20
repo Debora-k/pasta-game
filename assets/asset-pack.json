@@ -144,7 +144,7 @@
             {
                 "url": "assets/egg-outline.png",
                 "type": "image",
-                "key": "egg-outline"
+                "key": "egg_outline"
             },
             {
                 "url": "assets/eggs.png",
@@ -174,12 +174,12 @@
             {
                 "url": "assets/flour-egg-1.png",
                 "type": "image",
-                "key": "flour-egg-1"
+                "key": "flour_egg_1"
             },
             {
                 "url": "assets/flour-egg-2.png",
                 "type": "image",
-                "key": "flour-egg-2"
+                "key": "flour_egg_2"
             },
             {
                 "url": "assets/sprites/flour-jar.png",
