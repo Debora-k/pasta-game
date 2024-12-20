@@ -74,7 +74,7 @@
             {
                 "url": "assets/kneading-sprites/4.png",
                 "type": "image",
-                "key": "4"
+                "key": "fourth_dough"
             },
             {
                 "url": "assets/kneading-sprites/5.png",
@@ -340,7 +340,7 @@
             {
                 "url": "assets/wet-dough-1.png",
                 "type": "image",
-                "key": "wet-dough-1"
+                "key": "wet_dough_1"
             },
             {
                 "url": "assets/wet-dough-2.png",
@@ -355,7 +355,7 @@
             {
                 "url": "assets/whisked-eggs.png",
                 "type": "image",
-                "key": "whisked-eggs"
+                "key": "whisked_eggs"
             }
         ]
     },
