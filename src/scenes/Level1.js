@@ -29,13 +29,23 @@ export default class Level1 extends Phaser.Scene {
 		const chopping_board = this.add.image(700, 450, "chopping_board");
 		chopping_board.setScale(0.24, 0.24);
 
+		const clipboard = this.add.image(1090, 430, "clipboard");
+		clipboard.setScale(0.25, 0.25);
+
+		const rect1 = this.add.rectangle(985, 330, 20, 20, 0x808080, 1);
+		
 		let flour = this.add.image(720, 450, "flour");
 		flour.setScale(0.8, 0.8);
 		flour.setVisible(false);
 		const flour_jar = this.add.image(165, 410, "flour_jar");
 		flour_jar.setScale(0.12, 0.12);
+		let flourClickCnt = 0;
 		flour_jar.setInteractive().on('pointerdown', () => {
+			flourClickCnt++;
 			flour.setVisible(true);
+			if(flourClickCnt === 1) {
+				rect1.setFillStyle(0x00ff00);
+			}
 		});
 
 		const flour_egg_1 = this.add.image(720, 450, "flour_egg_1");
@@ -95,9 +105,6 @@ export default class Level1 extends Phaser.Scene {
 		basil.setInteractive().on('pointerup', () => {});
 
 
-		const clipboard = this.add.image(1090, 430, "clipboard");
-		clipboard.setScale(0.25, 0.25);
-		const rect1 = this.add.rectangle(985, 330, 20, 20, 0x808080, 1);
 
 		const clipboard_list1 = this.add.text(1000, 330, "Add 100g flour", {});
 		clipboard_list1.setOrigin(0, 0.5);
@@ -185,6 +192,8 @@ export default class Level1 extends Phaser.Scene {
 	flour;
 	/** @type {Phaser.GameObjects.Image} */
 	flour_egg_1;
+	/** @type {Phaser.GameObjects.Image} */
+	flour_egg_2;
 
 
 	/* START-USER-CODE */
