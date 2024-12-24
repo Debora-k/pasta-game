@@ -129,8 +129,22 @@ export default class Level1 extends Phaser.Scene {
 				whisked_eggs.setVisible(false);
 				wet_dough_1.setScale(0.65, 0.65);
 				wet_dough_1.setVisible(true);
+
 			}
+		wet_dough_1.setInteractive().on('pointerdown', () => this.onEvent())
+		.on('pointerdown', () => {
+			clickCnt++;
+			if(clickCnt === 6) {
+				this.initialTime = 150;
+				const txt = this.add.text(1000, 32, 'Countdown: ' + formatTime(this.initialTime));
+				txt.setStyle(textStyle);
+				const timerEvent = this.time.addEvent({ delay: 1000, callback: onEvent, callbackScope: this, loop: true });
+			}
+		})
 		});
+
+
+
 
 		const tomatoes = this.add.image(115, 615, "tomatoes");
 		tomatoes.setScale(0.095, 0.095);
@@ -240,7 +254,6 @@ export default class Level1 extends Phaser.Scene {
 
 	/* START-USER-CODE */
 
-	// Write your code here
 	kneadDough() {
 		this.tweens.add({
 			targets:[this.wet_dough_1],
@@ -250,6 +263,17 @@ export default class Level1 extends Phaser.Scene {
 		});
 	}
 
+	formatTime(seconds) {
+		let minutes = Math.floor(seconds/60);
+		let partInSeconds = seconds%60;
+		partInSeconds = partInSeconds.toString().padStart(2, '0');
+		return `${minutes}:${partInSeconds}`;
+	}
+
+	onEvent () {
+		this.initialTime -= 1;
+		txt.setText('Countdown: ' + formatTime(this.initialTime));
+	}
 
 	create() {
 
