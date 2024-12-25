@@ -131,19 +131,20 @@ export default class Level1 extends Phaser.Scene {
 				wet_dough_1.setVisible(true);
 
 			}
-		wet_dough_1.setInteractive().on('pointerdown', () => this.onEvent())
-		.on('pointerdown', () => {
-			clickCnt++;
-			if(clickCnt === 6) {
-				this.initialTime = 150;
-				const txt = this.add.text(1000, 32, 'Countdown: ' + formatTime(this.initialTime));
-				txt.setStyle(textStyle);
-				const timerEvent = this.time.addEvent({ delay: 1000, callback: onEvent, callbackScope: this, loop: true });
-			}
-		})
 		});
 
-
+		let initialTime = 150;
+		const txt = this.add.text(1000, 32, 'Countdown: ' + this.formatTime(initialTime), textStyle);
+		txt.setVisible(false);
+		wet_dough_1.setInteractive().on('pointerup', () => this.onEvent())
+		.on('pointerup', () => {
+			clickCnt++;
+			if(clickCnt === 6) {
+				txt.setVisible(true);
+			}
+		this.time.addEvent({delay:1000, callback: () => this.onEvent(), loop:true});
+		});
+	
 
 
 		const tomatoes = this.add.image(115, 615, "tomatoes");
@@ -209,8 +210,11 @@ export default class Level1 extends Phaser.Scene {
 		this.flour = flour;
 		this.whisked_eggs = whisked_eggs;
 		this.wet_dough_1 = wet_dough_1;
+		this.txt = txt;
+		this.initialTime = initialTime;
 
 		this.events.emit("scene-awake");
+
 		//}
 	}
 
@@ -250,7 +254,10 @@ export default class Level1 extends Phaser.Scene {
 	whisked_eggs
 	/** @type {Phaser.GameObjects.Image} */
 	wet_dough_1;
-
+	/** @type {Phaser.GameObjects.Text} */
+	txt;
+	/** @type Number */
+	initialTime;
 
 	/* START-USER-CODE */
 
@@ -272,7 +279,7 @@ export default class Level1 extends Phaser.Scene {
 
 	onEvent () {
 		this.initialTime -= 1;
-		txt.setText('Countdown: ' + formatTime(this.initialTime));
+		this.txt.setText(`Countdown: ${this.formatTime(this.initialTime)}`);
 	}
 
 	create() {
