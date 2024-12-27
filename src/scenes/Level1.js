@@ -135,12 +135,19 @@ export default class Level1 extends Phaser.Scene {
 
 		let initialTime = 150;
 		const txt = this.add.text(1000, 32, 'Countdown: ' + this.formatTime(initialTime), textStyle);
+		const wet_dough_2 = this.add.image(720, 450, "wet_dough_2");
+		const rect5 = this.add.rectangle(985, 530, 20, 20, 0x808080, 1);
+		wet_dough_2.setVisible(false);
+		wet_dough_2.setScale(0.65, 0.65);
 		txt.setVisible(false);
 		wet_dough_1.setInteractive().on('pointerup', () => this.onEvent())
 		.on('pointerup', () => {
 			clickCnt++;
 			if(clickCnt === 6) {
+				wet_dough_1.setVisible(false);
+				rect5.setFillStyle(0x00ff00);
 				txt.setVisible(true);
+				wet_dough_2.setVisible(true);
 			}
 		this.time.addEvent({delay:1000, callback: () => this.onEvent(), loop:true});
 		});
@@ -176,7 +183,7 @@ export default class Level1 extends Phaser.Scene {
 		clipboard_list4.setOrigin(0, 0.5);
 		clipboard_list4.setStyle(textStyle);
 		
-		const rect5 = this.add.rectangle(985, 530, 20, 20, 0x808080, 1);
+		
 		const clipboard_list5 = this.add.text(1000, 530, "Rest the dough for 30 min", {});
 		clipboard_list5.setOrigin(0, 0.5);
 		clipboard_list5.setStyle(textStyle);
@@ -212,6 +219,7 @@ export default class Level1 extends Phaser.Scene {
 		this.wet_dough_1 = wet_dough_1;
 		this.txt = txt;
 		this.initialTime = initialTime;
+		this.wet_dough_2 = wet_dough_2;
 
 		this.events.emit("scene-awake");
 
@@ -258,6 +266,8 @@ export default class Level1 extends Phaser.Scene {
 	txt;
 	/** @type Number */
 	initialTime;
+	/** @type {Phaser.GameObjects.Image} */
+	wet_dough_2;
 
 	/* START-USER-CODE */
 

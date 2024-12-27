@@ -99,7 +99,7 @@
             {
                 "url": "assets/kneading-sprites/9.png",
                 "type": "image",
-                "key": "9"
+                "key": "rest_dough"
             },
             {
                 "url": "assets/sprites/basil.png",
@@ -345,7 +345,7 @@
             {
                 "url": "assets/wet-dough-2.png",
                 "type": "image",
-                "key": "wet-dough-2"
+                "key": "wet_dough_2"
             },
             {
                 "url": "assets/sprites/whisk.png",
