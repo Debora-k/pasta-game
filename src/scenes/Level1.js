@@ -133,23 +133,24 @@ export default class Level1 extends Phaser.Scene {
 			}
 		});
 
-		let initialTime = 150;
+		let initialTime = 30;
 		const txt = this.add.text(1000, 32, 'Countdown: ' + this.formatTime(initialTime), textStyle);
 		const wet_dough_2 = this.add.image(720, 450, "wet_dough_2");
 		const rect5 = this.add.rectangle(985, 530, 20, 20, 0x808080, 1);
 		wet_dough_2.setVisible(false);
 		wet_dough_2.setScale(0.65, 0.65);
 		txt.setVisible(false);
-		wet_dough_1.setInteractive().on('pointerup', () => this.onEvent())
-		.on('pointerup', () => {
+		wet_dough_1.setInteractive().on('pointerdown', () => this.onEvent())
+		.on('stop', () => this.kneadDough())
+		.on('pointerdown', () => {
 			clickCnt++;
 			if(clickCnt === 6) {
-				wet_dough_1.setVisible(false);
 				rect5.setFillStyle(0x00ff00);
 				txt.setVisible(true);
+				wet_dough_1.setVisible(false);
 				wet_dough_2.setVisible(true);
 			}
-		this.time.addEvent({delay:1000, callback: () => this.onEvent(), loop:true});
+		this.time.addEvent({delay:1000, callback: () => this.onEvent(), callbackScope:this, loop:true});
 		});
 	
 
@@ -283,6 +284,10 @@ export default class Level1 extends Phaser.Scene {
 	formatTime(seconds) {
 		let minutes = Math.floor(seconds/60);
 		let partInSeconds = seconds%60;
+		// if(minutes === 0 && partInSeconds === 0) {
+		// 	formatTime.remove();
+		// 	formatTime.setVisible(false);
+		// }	
 		partInSeconds = partInSeconds.toString().padStart(2, '0');
 		return `${minutes}:${partInSeconds}`;
 	}
