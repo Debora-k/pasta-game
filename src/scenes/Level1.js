@@ -150,7 +150,8 @@ export default class Level1 extends Phaser.Scene {
 				wet_dough_1.setVisible(false);
 				wet_dough_2.setVisible(true);
 			}
-		this.time.addEvent({delay:1000, callback: () => this.onEvent(), callbackScope:this, loop:true});
+		let timer = this.time.addEvent({delay:1000, callback: () => this.onEvent(), callbackScope:this, loop:true});
+		this.timer = timer;
 		});
 	
 
@@ -269,6 +270,9 @@ export default class Level1 extends Phaser.Scene {
 	initialTime;
 	/** @type {Phaser.GameObjects.Image} */
 	wet_dough_2;
+	/** @type Time event */
+	timer;
+
 
 	/* START-USER-CODE */
 
@@ -294,6 +298,9 @@ export default class Level1 extends Phaser.Scene {
 
 	onEvent () {
 		this.initialTime -= 1;
+		if(this.initialTime === 0) {
+			this.time.removeEvent(this.timer);
+		};
 		this.txt.setText(`Countdown: ${this.formatTime(this.initialTime)}`);
 	}
 
