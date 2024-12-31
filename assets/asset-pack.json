@@ -4,22 +4,22 @@
             {
                 "url": "assets/sliced-dough/1.png",
                 "type": "image",
-                "key": "_0"
+                "key": "sliced_dough_1"
             },
             {
                 "url": "assets/sliced-dough/2.png",
                 "type": "image",
-                "key": "_1"
+                "key": "sliced_dough_2"
             },
             {
                 "url": "assets/sliced-dough/3.png",
                 "type": "image",
-                "key": "_2"
+                "key": "sliced_dough_3"
             },
             {
                 "url": "assets/sliced-dough/4.png",
                 "type": "image",
-                "key": "_3"
+                "key": "sliced_dough_4"
             },
             {
                 "url": "assets/kneading-sprites/1.png",

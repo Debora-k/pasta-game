@@ -94,9 +94,6 @@ export default class Level1 extends Phaser.Scene {
 		olive_oil.setScale(0.08, 0.08);
 		olive_oil.setInteractive().on('pointerup', () => {});
 
-		const knife = this.add.image(820, 180, "knife");
-		knife.setScale(0.3, 0.3);
-		knife.setInteractive().on('pointerup', () => {});
 
 		const semolina_flour_jar = this.add.image(390, 280, "semolina_flour_jar");
 		semolina_flour_jar.setScale(0.09, 0.09);
@@ -133,7 +130,7 @@ export default class Level1 extends Phaser.Scene {
 			}
 		});
 
-		let initialTime = 30;
+		let initialTime = 10;
 		const txt = this.add.text(1000, 32, 'Countdown: ' + this.formatTime(initialTime), textStyle);
 		const wet_dough_2 = this.add.image(720, 450, "wet_dough_2");
 		const rect5 = this.add.rectangle(985, 530, 20, 20, 0x808080, 1);
@@ -150,8 +147,41 @@ export default class Level1 extends Phaser.Scene {
 				wet_dough_1.setVisible(false);
 				wet_dough_2.setVisible(true);
 			}
-		let timer = this.time.addEvent({delay:1000, callback: () => this.onEvent(), callbackScope:this, loop:true});
-		this.timer = timer;
+			let timer = this.time.addEvent({delay:1000, callback: () => this.onEvent(), callbackScope:this, loop:true});
+			this.timer = timer;
+		});
+
+		const rect6 = this.add.rectangle(985, 580, 20, 20, 0x808080, 1);
+		const sliced_dough_1 = this.add.image(715, 430, "sliced_dough_1");
+		const sliced_dough_2 = this.add.image(715, 430, "sliced_dough_2");
+		const sliced_dough_3 = this.add.image(715, 445, "sliced_dough_3");
+		const sliced_dough_4 = this.add.image(715, 445, "sliced_dough_4");
+		sliced_dough_1.setScale(0.15, 0.15);
+		sliced_dough_2.setScale(0.15, 0.15);
+		sliced_dough_3.setScale(0.15, 0.15);
+		sliced_dough_4.setScale(0.15, 0.15);
+		sliced_dough_1.setVisible(false);
+		sliced_dough_2.setVisible(false);
+		sliced_dough_3.setVisible(false);
+		sliced_dough_4.setVisible(false);
+		const knife = this.add.image(820, 180, "knife");
+		knife.setScale(0.3, 0.3);
+		knife.setInteractive().on('pointerdown', () => {
+			wet_dough_2.setVisible(false);
+			clickCnt++;
+			if(clickCnt === 7){
+				sliced_dough_1.setVisible(true);
+				sliced_dough_2.setVisible(true);
+				sliced_dough_3.setVisible(true);
+				sliced_dough_4.setVisible(true);
+			}
+			
+			clickCnt++;
+			if(clickCnt === 8) {
+				rect6.setFillStyle(0x00ff00);
+				sliced_dough_2.setPosition(730, 430);
+				sliced_dough_3.setPosition(730, 445);
+			}
 		});
 	
 
@@ -190,7 +220,7 @@ export default class Level1 extends Phaser.Scene {
 		clipboard_list5.setOrigin(0, 0.5);
 		clipboard_list5.setStyle(textStyle);
 
-		const rect6 = this.add.rectangle(985, 580, 20, 20, 0x808080, 1);
+
 		const clipboard_list6 = this.add.text(1000, 580, "Cut the dough", {});
 		clipboard_list6.setOrigin(0, 0.5);
 		clipboard_list6.setStyle(textStyle);
@@ -222,6 +252,11 @@ export default class Level1 extends Phaser.Scene {
 		this.txt = txt;
 		this.initialTime = initialTime;
 		this.wet_dough_2 = wet_dough_2;
+
+		this.sliced_dough_1 = sliced_dough_1;
+		this.sliced_dough_2 = sliced_dough_2;
+		this.sliced_dough_3 = sliced_dough_3;
+		this.sliced_dough_4 = sliced_dough_4;
 
 		this.events.emit("scene-awake");
 
@@ -272,6 +307,14 @@ export default class Level1 extends Phaser.Scene {
 	wet_dough_2;
 	/** @type Time event */
 	timer;
+	/** @type {Phaser.GameObjects.Image} */
+	sliced_dough_1;
+	/** @type {Phaser.GameObjects.Image} */
+	sliced_dough_2;
+	/** @type {Phaser.GameObjects.Image} */
+	sliced_dough_3;
+	/** @type {Phaser.GameObjects.Image} */
+	sliced_dough_4;
 
 
 	/* START-USER-CODE */
@@ -288,10 +331,6 @@ export default class Level1 extends Phaser.Scene {
 	formatTime(seconds) {
 		let minutes = Math.floor(seconds/60);
 		let partInSeconds = seconds%60;
-		// if(minutes === 0 && partInSeconds === 0) {
-		// 	formatTime.remove();
-		// 	formatTime.setVisible(false);
-		// }	
 		partInSeconds = partInSeconds.toString().padStart(2, '0');
 		return `${minutes}:${partInSeconds}`;
 	}
