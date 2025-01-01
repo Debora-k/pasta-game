@@ -18,11 +18,11 @@ export default class Level1 extends Phaser.Scene {
 
 	/** @returns {void} */
 	editorCreate() {
-		// let userClickCount = 0; 
-		// while(userClickCount < 8) {
+
 		const textStyle = {"fontFamily": "PixelifySans-Regular", "fontSize": "23px", "color":"black", "align": "left", wordWrap:{width:220, useAdvancedWrap:true}};
 		
-		
+
+
 		const level_bg = this.add.image(640, 360, "level_bg");
 		level_bg.setScale(0.5, 0.5);
 		level_bg.setInteractive(new Phaser.Geom.Rectangle(0, 0, 250, 250), Phaser.Geom.Rectangle.Contains);
@@ -40,6 +40,37 @@ export default class Level1 extends Phaser.Scene {
 		const clipboard = this.add.image(1090, 430, "clipboard");
 		clipboard.setScale(0.25, 0.25);
 
+
+		const clipboard_list1 = this.add.text(1000, 330, "Add 100g flour", {});
+		clipboard_list1.setOrigin(0, 0.5);
+		clipboard_list1.setStyle(textStyle);
+
+
+		const clipboard_list2 = this.add.text(1000, 380, "Crack 2 eggs", {});
+		clipboard_list2.setOrigin(0, 0.5);
+		clipboard_list2.setStyle(textStyle);
+
+
+		const clipboard_list3 = this.add.text(1000, 430, "Whisk the eggs", {});
+		clipboard_list3.setOrigin(0, 0.5);
+		clipboard_list3.setStyle(textStyle);
+
+		
+		const clipboard_list4 = this.add.text(1000, 480, "Knead the dough", {});
+		clipboard_list4.setOrigin(0, 0.5);
+		clipboard_list4.setStyle(textStyle);
+		
+		
+		const clipboard_list5 = this.add.text(1000, 530, "Rest the dough for 30 min", {});
+		clipboard_list5.setOrigin(0, 0.5);
+		clipboard_list5.setStyle(textStyle);
+
+
+		const clipboard_list6 = this.add.text(1000, 580, "Cut the dough", {});
+		clipboard_list6.setOrigin(0, 0.5);
+		clipboard_list6.setStyle(textStyle);
+
+
 		const rect1 = this.add.rectangle(985, 330, 20, 20, 0x808080, 1);
 		
 		let flour = this.add.image(720, 450, "flour");
@@ -50,7 +81,6 @@ export default class Level1 extends Phaser.Scene {
 		let clickCnt = 0;
 		flour_jar.setInteractive().on('pointerdown', () => {
 			clickCnt++;
-			//userClickCount++;
 			flour.setVisible(true);
 			if(clickCnt === 1) {
 				rect1.setFillStyle(0x00ff00);
@@ -151,6 +181,10 @@ export default class Level1 extends Phaser.Scene {
 			this.timer = timer;
 		});
 
+		
+		
+
+
 		const rect6 = this.add.rectangle(985, 580, 20, 20, 0x808080, 1);
 		const sliced_dough_1 = this.add.image(715, 430, "sliced_dough_1");
 		const sliced_dough_2 = this.add.image(715, 430, "sliced_dough_2");
@@ -166,6 +200,23 @@ export default class Level1 extends Phaser.Scene {
 		sliced_dough_4.setVisible(false);
 		const knife = this.add.image(820, 180, "knife");
 		knife.setScale(0.3, 0.3);
+
+
+		const plank = this.add.image(680, 300, "plank");
+		plank.setScale(0.35, 0.35);
+		plank.setVisible(false);
+		plank.setInteractive().on('pointerdown', () => {
+			// this.scene.start('Level');
+		})
+
+		const completeLevel = this.add.text(680, 300, "", {});
+		completeLevel.setOrigin(0.45, 0.45);
+		completeLevel.setVisible(false);
+		completeLevel.text = "Complete Fettuccine";
+		completeLevel.setStyle({"fontFamily": "PixelifySans-Regular", "fontSize": "58px"});
+
+
+
 		knife.setInteractive().on('pointerdown', () => {
 			wet_dough_2.setVisible(false);
 			clickCnt++;
@@ -175,15 +226,25 @@ export default class Level1 extends Phaser.Scene {
 				sliced_dough_3.setVisible(true);
 				sliced_dough_4.setVisible(true);
 			}
-			
+		})
+		.on('pointerdown', () => {
 			clickCnt++;
 			if(clickCnt === 8) {
 				rect6.setFillStyle(0x00ff00);
 				sliced_dough_2.setPosition(730, 430);
 				sliced_dough_3.setPosition(730, 445);
 			}
+		})
+		.on('pointerdown', () => {
+			clickCnt++;
+			if(clickCnt === 9) {
+				plank.setVisible(true);
+				completeLevel.setVisible(true);
+			}
 		});
 	
+			
+
 
 
 		const tomatoes = this.add.image(115, 615, "tomatoes");
@@ -195,35 +256,6 @@ export default class Level1 extends Phaser.Scene {
 		basil.setInteractive().on('pointerup', () => {});
 
 
-
-		const clipboard_list1 = this.add.text(1000, 330, "Add 100g flour", {});
-		clipboard_list1.setOrigin(0, 0.5);
-		clipboard_list1.setStyle(textStyle);
-
-
-		const clipboard_list2 = this.add.text(1000, 380, "Crack 2 eggs", {});
-		clipboard_list2.setOrigin(0, 0.5);
-		clipboard_list2.setStyle(textStyle);
-
-
-		const clipboard_list3 = this.add.text(1000, 430, "Whisk the eggs", {});
-		clipboard_list3.setOrigin(0, 0.5);
-		clipboard_list3.setStyle(textStyle);
-
-		
-		const clipboard_list4 = this.add.text(1000, 480, "Knead the dough", {});
-		clipboard_list4.setOrigin(0, 0.5);
-		clipboard_list4.setStyle(textStyle);
-		
-		
-		const clipboard_list5 = this.add.text(1000, 530, "Rest the dough for 30 min", {});
-		clipboard_list5.setOrigin(0, 0.5);
-		clipboard_list5.setStyle(textStyle);
-
-
-		const clipboard_list6 = this.add.text(1000, 580, "Cut the dough", {});
-		clipboard_list6.setOrigin(0, 0.5);
-		clipboard_list6.setStyle(textStyle);
 
 		this.level_bg = level_bg;
 		this.chopping_board = chopping_board;
@@ -257,6 +289,9 @@ export default class Level1 extends Phaser.Scene {
 		this.sliced_dough_2 = sliced_dough_2;
 		this.sliced_dough_3 = sliced_dough_3;
 		this.sliced_dough_4 = sliced_dough_4;
+
+		this.completeLevel = completeLevel;
+		this.plank = plank;
 
 		this.events.emit("scene-awake");
 
@@ -315,6 +350,10 @@ export default class Level1 extends Phaser.Scene {
 	sliced_dough_3;
 	/** @type {Phaser.GameObjects.Image} */
 	sliced_dough_4;
+	/** @type {Phaser.GameObjects.Image} */
+	plank;
+	/** @type {Phaser.GameObjects.Text} */
+	completeLevel;
 
 
 	/* START-USER-CODE */
@@ -353,4 +392,3 @@ export default class Level1 extends Phaser.Scene {
 
 /* END OF COMPILED CODE */
 
-// You can write more code here
