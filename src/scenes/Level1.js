@@ -382,6 +382,15 @@ export default class Level1 extends Phaser.Scene {
 		this.txt.setText(`Countdown: ${this.formatTime(this.initialTime)}`);
 	}
 
+	// complete () {
+	// 	this.level_bg = this.add.image(640, 360, "level_bg");
+	// 	this.level_bg.setScale(0.5, 0.5);
+	// 	this.plank = this.scene.add.image(680, 300, "plank", {backgroundColor: "rgb(255 255 255 / 0.5)",});
+	// 	this.completeLevel = this.scene.add.text(680, 300, "", {});
+	// 	this.plank.setScale(0.35, 0.35);
+	// 	this.completeLevel.setOrigin(0.45, 0.45);
+	// }
+
 	create() {
 
 		this.editorCreate();

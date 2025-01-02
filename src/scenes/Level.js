@@ -51,6 +51,7 @@ export default class Level extends Phaser.Scene {
 
 		const rigatoni = this.add.image(495, 485, "rigatoni");
 		rigatoni.setScale(0.2, 0.2);
+		
 
 		const plank_2 = this.add.image(495, 620, "plank");
 		plank_2.setScale(0.15, 0.15);
@@ -147,13 +148,12 @@ export default class Level extends Phaser.Scene {
 
 
 	create() {
-
 		this.editorCreate();
 	}
+
 
 	/* END-USER-CODE */
 }
 
 /* END OF COMPILED CODE */
 
-// You can write more code here
