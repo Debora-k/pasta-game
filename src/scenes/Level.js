@@ -52,6 +52,23 @@ export default class Level extends Phaser.Scene {
 		const rigatoni = this.add.image(495, 485, "rigatoni");
 		rigatoni.setScale(0.2, 0.2);
 		
+		const farfalle = this.add.image(795, 485, "farfalle");
+		farfalle.setScale(0.2, 0.2);
+		
+		const lasagna = this.add.image(1090, 485, "lasagna");
+		lasagna.setScale(0.2, 0.2);
+		
+		const block_bg_1 = this.add.rectangle(495, 485, 200, 200, 0x000000, 0.75);
+		const lock_1 = this.add.image(495, 485, "lock");
+		lock_1.setScale(0.15, 0.15);
+		
+		const block_bg_2 = this.add.rectangle(795, 485, 200, 200, 0x000000, 0.75);
+		const lock_2 = this.add.image(795, 485, "lock");
+		lock_2.setScale(0.15, 0.15);
+
+		const block_bg_3 = this.add.rectangle(1090, 485, 200, 200, 0x000000, 0.75);
+		const lock_3 = this.add.image(1090, 485, "lock");
+		lock_3.setScale(0.15, 0.15);
 
 		const plank_2 = this.add.image(495, 620, "plank");
 		plank_2.setScale(0.15, 0.15);
@@ -61,8 +78,7 @@ export default class Level extends Phaser.Scene {
 		rigatoni_txt.text = "Rigatoni";
 		rigatoni_txt.setStyle({"fontFamily": "PixelifySans-Bold", "fontSize": "30px"});
 
-		const farfalle = this.add.image(795, 485, "farfalle");
-		farfalle.setScale(0.2, 0.2);
+
 
 		const plank_3 = this.add.image(795, 620, "plank");
 		plank_3.setScale(0.15, 0.15);
@@ -72,8 +88,6 @@ export default class Level extends Phaser.Scene {
 		farfalle_txt.text = "Farfalle";
 		farfalle_txt.setStyle({"fontFamily": "PixelifySans-Bold", "fontSize": "30px"});
 
-		const lasagna = this.add.image(1090, 485, "lasagna");
-		lasagna.setScale(0.2, 0.2);
 
 		const plank_4 = this.add.image(1090, 620, "plank");
 		plank_4.setScale(0.15, 0.15);
@@ -95,6 +109,14 @@ export default class Level extends Phaser.Scene {
 		this.lasagna = lasagna;
 		this.plank_4 = plank_4;
 
+		this.block_bg_1 = block_bg_1;
+		this.lock_1 = lock_1;
+
+		this.block_bg_2 = block_bg_2;
+		this.lock_2 = lock_2;
+
+		this.block_bg_3 = block_bg_3;
+		this.lock_3 = lock_3;
 		this.events.emit("scene-awake");
 	}
 
@@ -120,7 +142,18 @@ export default class Level extends Phaser.Scene {
 	lasagna;
 	/** @type {Phaser.GameObjects.Image} */
 	plank_4;
-
+	/** @type {Phaser.GameObjects.Image} */
+	block_bg_1;
+	/** @type {Phaser.GameObjects.Image} */
+	block_bg_2;
+	/** @type {Phaser.GameObjects.Image} */
+	block_bg_3;
+	/** @type {Phaser.GameObjects.Image} */
+	lock_1;
+	/** @type {Phaser.GameObjects.Image} */
+	lock_2;
+	/** @type {Phaser.GameObjects.Image} */
+	lock_3;
 
 
 
