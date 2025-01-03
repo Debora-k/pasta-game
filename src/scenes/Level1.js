@@ -129,6 +129,15 @@ export default class Level1 extends Phaser.Scene {
 		semolina_flour_jar.setScale(0.09, 0.09);
 		semolina_flour_jar.setInteractive().on('pointerup', () => {});
 
+
+		const tomatoes = this.add.image(115, 615, "tomatoes");
+		tomatoes.setScale(0.095, 0.095);
+		tomatoes.setInteractive().on('pointerup', () => {});
+
+		const basil = this.add.image(315, 630, "basil");
+		basil.setScale(0.1, 0.1);
+		basil.setInteractive().on('pointerup', () => {});
+
 		const rect3 = this.add.rectangle(985, 430, 20, 20, 0x808080, 1);
 		const whisked_eggs = this.add.image(720, 450, "whisked_eggs");
 
@@ -201,12 +210,14 @@ export default class Level1 extends Phaser.Scene {
 		const knife = this.add.image(820, 180, "knife");
 		knife.setScale(0.3, 0.3);
 
+		const addBackground = this.add.rectangle(720, 450, 2000, 2000, 0x000000, 0.5);
+		addBackground.setVisible(false);
 
 		const plank = this.add.image(680, 300, "plank");
-		plank.setScale(0.35, 0.35);
+		plank.setScale(0.37, 0.37);
 		plank.setVisible(false);
 		plank.setInteractive().on('pointerdown', () => {
-			// this.scene.start('Level');
+			this.scene.start('Level');
 		})
 
 		const completeLevel = this.add.text(680, 300, "", {});
@@ -215,8 +226,8 @@ export default class Level1 extends Phaser.Scene {
 		completeLevel.text = "Complete Fettuccine";
 		completeLevel.setStyle({"fontFamily": "PixelifySans-Regular", "fontSize": "58px"});
 
-
-
+		let waitingTime = 3;
+		
 		knife.setInteractive().on('pointerdown', () => {
 			wet_dough_2.setVisible(false);
 			clickCnt++;
@@ -238,8 +249,8 @@ export default class Level1 extends Phaser.Scene {
 		.on('pointerdown', () => {
 			clickCnt++;
 			if(clickCnt === 9) {
-				plank.setVisible(true);
-				completeLevel.setVisible(true);
+				let delay = this.time.addEvent({delay:2000, callback: () => this.onEnd(), callbackScope:this, loop:true});
+				this.delay = delay;
 			}
 		});
 	
@@ -247,13 +258,6 @@ export default class Level1 extends Phaser.Scene {
 
 
 
-		const tomatoes = this.add.image(115, 615, "tomatoes");
-		tomatoes.setScale(0.095, 0.095);
-		tomatoes.setInteractive().on('pointerup', () => {});
-
-		const basil = this.add.image(315, 630, "basil");
-		basil.setScale(0.1, 0.1);
-		basil.setInteractive().on('pointerup', () => {});
 
 
 
@@ -292,6 +296,9 @@ export default class Level1 extends Phaser.Scene {
 
 		this.completeLevel = completeLevel;
 		this.plank = plank;
+		this.addBackground = addBackground;
+		this.waitingTime = waitingTime;
+
 
 		this.events.emit("scene-awake");
 
@@ -354,6 +361,10 @@ export default class Level1 extends Phaser.Scene {
 	plank;
 	/** @type {Phaser.GameObjects.Text} */
 	completeLevel;
+	/** @type Time event */
+	delay;
+	/** @type Number */
+	waitingTime;
 
 
 	/* START-USER-CODE */
@@ -378,9 +389,22 @@ export default class Level1 extends Phaser.Scene {
 		this.initialTime -= 1;
 		if(this.initialTime === 0) {
 			this.time.removeEvent(this.timer);
+			this.txt.setVisible(false);
 		};
 		this.txt.setText(`Countdown: ${this.formatTime(this.initialTime)}`);
 	}
+
+	onEnd () {
+		this.waitingTime -= 1;
+		if(this.waitingTime === 0) {
+			this.time.removeEvent(this.delay);
+			this.addBackground.setVisible(true);
+			this.plank.setVisible(true);
+			this.completeLevel.setVisible(true);
+		}
+	}
+
+
 
 	// complete () {
 	// 	this.level_bg = this.add.image(640, 360, "level_bg");
