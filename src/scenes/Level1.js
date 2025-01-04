@@ -1,6 +1,4 @@
 
-// You can write more code here
-
 /* START OF COMPILED CODE */
 
 /* START-USER-IMPORTS */
@@ -21,7 +19,6 @@ export default class Level1 extends Phaser.Scene {
 
 		const textStyle = {"fontFamily": "PixelifySans-Regular", "fontSize": "23px", "color":"black", "align": "left", wordWrap:{width:220, useAdvancedWrap:true}};
 		
-
 
 		const level_bg = this.add.image(640, 360, "level_bg");
 		level_bg.setScale(0.5, 0.5);
@@ -70,6 +67,8 @@ export default class Level1 extends Phaser.Scene {
 		clipboard_list6.setOrigin(0, 0.5);
 		clipboard_list6.setStyle(textStyle);
 
+		let clickedImage;
+		let clickCnt = 0;
 
 		const rect1 = this.add.rectangle(985, 330, 20, 20, 0x808080, 1);
 		
@@ -78,14 +77,8 @@ export default class Level1 extends Phaser.Scene {
 		flour.setVisible(false);
 		const flour_jar = this.add.image(165, 410, "flour_jar");
 		flour_jar.setScale(0.12, 0.12);
-		let clickCnt = 0;
-		flour_jar.setInteractive().on('pointerdown', () => {
-			clickCnt++;
-			flour.setVisible(true);
-			if(clickCnt === 1) {
-				rect1.setFillStyle(0x00ff00);
-			}
-		});
+		
+		flour_jar.setInteractive().on('pointerdown', () => this.mouseHandler(this.flour_jar));
 
 		const flour_egg_1 = this.add.image(720, 450, "flour_egg_1");
 		flour_egg_1.setScale(0.8, 0.8);
@@ -102,23 +95,11 @@ export default class Level1 extends Phaser.Scene {
 		egg_outline.setVisible(false);
 		const eggs_1 = this.add.image(150, 150, "eggs_1");
 		eggs_1.setScale(0.13, 0.13);
+
 		let eggs_clickedCnt = 0;
-		eggs_1.setInteractive().on('pointerdown', () => {
-			eggs_clickedCnt++;
-			clickCnt++;
-			//userClickCount++;
-			flour.setVisible(false);
-			flour_egg_1.setVisible(true);
-			if(eggs_clickedCnt === 1 && clickCnt === 2) {
-				egg_outline.setVisible(true);
-			};
-			if (eggs_clickedCnt === 2 && clickCnt === 3) {
-				rect2.setFillStyle(0x00ff00);
-				flour_egg_1.setVisible(false);
-				egg_outline.setVisible(false);
-				flour_egg_2.setVisible(true);
-			}
-		});
+
+		eggs_1.setInteractive().on('pointerdown', () => this.mouseHandler(this.eggs_1));
+
 
 		const olive_oil = this.add.image(380, 100, "olive_oil");
 		olive_oil.setScale(0.08, 0.08);
@@ -147,6 +128,7 @@ export default class Level1 extends Phaser.Scene {
 		whisk.setInteractive().on('pointerdown', () => {
 			clickCnt++;
 			if (clickCnt === 4) {
+				clickedImage = whisk;
 				rect3.setFillStyle(0x00ff00);
 				flour_egg_2.setVisible(false);
 				whisked_eggs.setScale(0.8, 0.8);
@@ -159,6 +141,7 @@ export default class Level1 extends Phaser.Scene {
 		const rect4 = this.add.rectangle(985, 480, 20, 20, 0x808080, 1);
 		whisked_eggs.setInteractive().on('pointerdown', () => this.kneadDough())
 		.on('pointerdown', () => {
+			clickedImage = whisked_eggs;
 			clickCnt++;
 			if(clickCnt === 5) {
 				rect4.setFillStyle(0x00ff00);
@@ -179,6 +162,7 @@ export default class Level1 extends Phaser.Scene {
 		wet_dough_1.setInteractive().on('pointerdown', () => this.onEvent())
 		.on('stop', () => this.kneadDough())
 		.on('pointerdown', () => {
+			clickedImage = wet_dough_1;
 			clickCnt++;
 			if(clickCnt === 6) {
 				rect5.setFillStyle(0x00ff00);
@@ -229,6 +213,7 @@ export default class Level1 extends Phaser.Scene {
 		let waitingTime = 3;
 		
 		knife.setInteractive().on('pointerdown', () => {
+			clickedImage = knife;
 			wet_dough_2.setVisible(false);
 			clickCnt++;
 			if(clickCnt === 7){
@@ -265,6 +250,8 @@ export default class Level1 extends Phaser.Scene {
 		this.chopping_board = chopping_board;
 		this.eggs_1 = eggs_1;
 		this.flour_egg_1 = flour_egg_1;
+		this.flour_egg_2 = flour_egg_2;
+		this.egg_outline = egg_outline;
 		this.olive_oil = olive_oil;
 		this.tissues = tissues;
 		this.knife = knife;
@@ -299,6 +286,10 @@ export default class Level1 extends Phaser.Scene {
 		this.addBackground = addBackground;
 		this.waitingTime = waitingTime;
 
+
+		this.clickCnt = clickCnt;
+		this.clickedImage = clickedImage;
+		this.eggs_clickedCnt = eggs_clickedCnt;
 
 		this.events.emit("scene-awake");
 
@@ -337,6 +328,8 @@ export default class Level1 extends Phaser.Scene {
 	flour_egg_1;
 	/** @type {Phaser.GameObjects.Image} */
 	flour_egg_2;
+	/** @type {Phaser.GameObjects.Image} */
+	egg_outline;
 	/** @type {Phaser.GameObjects.Image} */
 	whisked_eggs
 	/** @type {Phaser.GameObjects.Image} */
@@ -404,16 +397,27 @@ export default class Level1 extends Phaser.Scene {
 		}
 	}
 
+	mouseHandler (clickedImage) {
+		if(this.clickCnt === 0 && clickedImage === this.flour_jar) {
+			this.clickCnt++;
+			this.flour.setVisible(true);
+			this.rect1.setFillStyle(0x00ff00);
+		}else if(this.eggs_clickedCnt === 0 && this.clickCnt === 1 && clickedImage === this.eggs_1) {
+			this.clickCnt++;
+			this.eggs_clickedCnt++;
+			this.flour.setVisible(false);
+			this.flour_egg_1.setVisible(true);
+			this.egg_outline.setVisible(true);
+		} else if (this.eggs_clickedCnt === 1 && this.clickCnt === 2 && clickedImage ===this.eggs_1) {
+			this.clickCnt++;
+			this.eggs_clickedCnt++;
+			this.rect2.setFillStyle(0x00ff00);
+			this.flour_egg_1.setVisible(false);
+			this.egg_outline.setVisible(false);
+			this.flour_egg_2.setVisible(true);
+		};
+	}
 
-
-	// complete () {
-	// 	this.level_bg = this.add.image(640, 360, "level_bg");
-	// 	this.level_bg.setScale(0.5, 0.5);
-	// 	this.plank = this.scene.add.image(680, 300, "plank", {backgroundColor: "rgb(255 255 255 / 0.5)",});
-	// 	this.completeLevel = this.scene.add.text(680, 300, "", {});
-	// 	this.plank.setScale(0.35, 0.35);
-	// 	this.completeLevel.setOrigin(0.45, 0.45);
-	// }
 
 	create() {
 
