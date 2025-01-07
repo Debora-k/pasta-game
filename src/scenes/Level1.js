@@ -125,32 +125,15 @@ export default class Level1 extends Phaser.Scene {
 		whisked_eggs.setVisible(false);
 		const whisk = this.add.image(440, 495, "whisk");
 		whisk.setScale(0.3, 0.3);
-		whisk.setInteractive().on('pointerdown', () => {
-			clickCnt++;
-			if (clickCnt === 4) {
-				clickedImage = whisk;
-				rect3.setFillStyle(0x00ff00);
-				flour_egg_2.setVisible(false);
-				whisked_eggs.setScale(0.8, 0.8);
-				whisked_eggs.setVisible(true);
-			}
-		});
+		whisk.setInteractive().on('pointerdown', () => this.mouseHandler(this.whisk));
+
 		const wet_dough_1= this.add.image(720, 450, "wet_dough_1");
 
 		wet_dough_1.setVisible(false);
 		const rect4 = this.add.rectangle(985, 480, 20, 20, 0x808080, 1);
 		whisked_eggs.setInteractive().on('pointerdown', () => this.kneadDough())
-		.on('pointerdown', () => {
-			clickedImage = whisked_eggs;
-			clickCnt++;
-			if(clickCnt === 5) {
-				rect4.setFillStyle(0x00ff00);
-				whisked_eggs.setVisible(false);
-				wet_dough_1.setScale(0.65, 0.65);
-				wet_dough_1.setVisible(true);
+		.on('pointerdown', () => this.mouseHandler(this.whisked_eggs));
 
-			}
-		});
 
 		let initialTime = 10;
 		const txt = this.add.text(1000, 32, 'Countdown: ' + this.formatTime(initialTime), textStyle);
@@ -162,17 +145,10 @@ export default class Level1 extends Phaser.Scene {
 		wet_dough_1.setInteractive().on('pointerdown', () => this.onEvent())
 		.on('stop', () => this.kneadDough())
 		.on('pointerdown', () => {
-			clickedImage = wet_dough_1;
-			clickCnt++;
-			if(clickCnt === 6) {
-				rect5.setFillStyle(0x00ff00);
-				txt.setVisible(true);
-				wet_dough_1.setVisible(false);
-				wet_dough_2.setVisible(true);
-			}
 			let timer = this.time.addEvent({delay:1000, callback: () => this.onEvent(), callbackScope:this, loop:true});
 			this.timer = timer;
-		});
+		})
+		.on('pointerdown', () => this.mouseHandler(this.wet_dough_1));
 
 		
 		
@@ -212,32 +188,7 @@ export default class Level1 extends Phaser.Scene {
 
 		let waitingTime = 3;
 		
-		knife.setInteractive().on('pointerdown', () => {
-			clickedImage = knife;
-			wet_dough_2.setVisible(false);
-			clickCnt++;
-			if(clickCnt === 7){
-				sliced_dough_1.setVisible(true);
-				sliced_dough_2.setVisible(true);
-				sliced_dough_3.setVisible(true);
-				sliced_dough_4.setVisible(true);
-			}
-		})
-		.on('pointerdown', () => {
-			clickCnt++;
-			if(clickCnt === 8) {
-				rect6.setFillStyle(0x00ff00);
-				sliced_dough_2.setPosition(730, 430);
-				sliced_dough_3.setPosition(730, 445);
-			}
-		})
-		.on('pointerdown', () => {
-			clickCnt++;
-			if(clickCnt === 9) {
-				let delay = this.time.addEvent({delay:2000, callback: () => this.onEnd(), callbackScope:this, loop:true});
-				this.delay = delay;
-			}
-		});
+		knife.setInteractive().on('pointerdown', () => this.mouseHandler(this.knife));
 	
 			
 
@@ -415,8 +366,41 @@ export default class Level1 extends Phaser.Scene {
 			this.flour_egg_1.setVisible(false);
 			this.egg_outline.setVisible(false);
 			this.flour_egg_2.setVisible(true);
-		};
+		} else if (this.clickCnt === 3 && clickedImage === this.whisk) {
+			this.clickCnt++;
+			this.flour_egg_2.setVisible(false);
+			this.rect3.setFillStyle(0x00ff00);
+			this.whisked_eggs.setScale(0.8, 0.8);
+			this.whisked_eggs.setVisible(true);
+		} else if (this.clickCnt === 4 && clickedImage === this.whisked_eggs) {
+			this.clickCnt++;
+			this.rect4.setFillStyle(0x00ff00);
+			this.whisked_eggs.setVisible(false);
+			this.wet_dough_1.setScale(0.65, 0.65);
+			this.wet_dough_1.setVisible(true);
+		} else if (this.clickCnt === 5 && clickedImage === this.wet_dough_1) {
+			this.clickCnt++;
+			this.rect5.setFillStyle(0x00ff00);
+			this.txt.setVisible(true);
+			this.wet_dough_1.setVisible(false);
+			this.wet_dough_2.setVisible(true);
+		} else if (this.clickCnt === 6 && clickedImage === this.knife) {
+			this.clickCnt++;
+			this.wet_dough_2.setVisible(false);
+			this.sliced_dough_1.setVisible(true);
+			this.sliced_dough_2.setVisible(true);
+			this.sliced_dough_3.setVisible(true);
+			this.sliced_dough_4.setVisible(true);
+		} else if (this.clickCnt === 7 && clickedImage === this.knife) {
+			this.clickCnt++;
+			this.rect6.setFillStyle(0x00ff00);
+			this.sliced_dough_2.setPosition(730, 430);
+			this.sliced_dough_3.setPosition(730, 445);
+			let delay = this.time.addEvent({delay:2000, callback: () => this.onEnd(), callbackScope:this, loop:true});
+			this.delay = delay;
+		}
 	}
+	
 
 
 	create() {
