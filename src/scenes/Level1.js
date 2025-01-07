@@ -186,6 +186,7 @@ export default class Level1 extends Phaser.Scene {
 		completeLevel.text = "Complete Fettuccine";
 		completeLevel.setStyle({"fontFamily": "PixelifySans-Regular", "fontSize": "58px"});
 
+		// waitingTime used in onEnd()
 		let waitingTime = 3;
 		
 		knife.setInteractive().on('pointerdown', () => this.mouseHandler(this.knife));
@@ -244,7 +245,6 @@ export default class Level1 extends Phaser.Scene {
 
 		this.events.emit("scene-awake");
 
-		//}
 	}
 
 	/** @type {Phaser.GameObjects.Image} */
@@ -345,6 +345,10 @@ export default class Level1 extends Phaser.Scene {
 			this.addBackground.setVisible(true);
 			this.plank.setVisible(true);
 			this.completeLevel.setVisible(true);
+		} 
+		else {
+			this.scene.stop();
+			this.scene.start('Level');
 		}
 	}
 
@@ -398,6 +402,25 @@ export default class Level1 extends Phaser.Scene {
 			this.sliced_dough_3.setPosition(730, 445);
 			let delay = this.time.addEvent({delay:2000, callback: () => this.onEnd(), callbackScope:this, loop:true});
 			this.delay = delay;
+		} else {
+			this.rect1.setFillStyle(0xff0000);
+			this.rect2.setFillStyle(0xff0000);
+			this.rect3.setFillStyle(0xff0000);
+			this.rect4.setFillStyle(0xff0000);
+			this.rect5.setFillStyle(0xff0000);
+			this.rect6.setFillStyle(0xff0000);
+			let delay = this.time.addEvent({delay:2000, callback: () => this.onEnd(), callbackScope:this, loop:true});
+			this.delay = delay;
+
+			this.addBackground.setVisible(true);
+			this.plank.setScale(0.37, 0.37);
+			this.plank.setVisible(true);
+			const fail = this.add.text(680, 300, "", {});
+			fail.setOrigin(0.45, 0.45);
+			fail.text = "Failed! Try Again";
+			fail.setStyle({"fontFamily": "PixelifySans-Regular", "fontSize": "58px"});
+			fail.setVisible(true);
+			this.scene.fail;
 		}
 	}
 	
