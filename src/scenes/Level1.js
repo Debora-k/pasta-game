@@ -103,21 +103,21 @@ export default class Level1 extends Phaser.Scene {
 
 		const olive_oil = this.add.image(380, 100, "olive_oil");
 		olive_oil.setScale(0.08, 0.08);
-		olive_oil.setInteractive().on('pointerup', () => {});
+		olive_oil.setInteractive().on('pointerdown', () => this.mouseHandler(this.olive_oil));
 
 
 		const semolina_flour_jar = this.add.image(390, 280, "semolina_flour_jar");
 		semolina_flour_jar.setScale(0.09, 0.09);
-		semolina_flour_jar.setInteractive().on('pointerup', () => {});
+		semolina_flour_jar.setInteractive().on('pointerdown', () => this.mouseHandler(this.semolina_flour_jar));
 
 
 		const tomatoes = this.add.image(115, 615, "tomatoes");
 		tomatoes.setScale(0.095, 0.095);
-		tomatoes.setInteractive().on('pointerup', () => {});
+		tomatoes.setInteractive().on('pointerdown', () => this.mouseHandler(this.tomatoes));
 
 		const basil = this.add.image(315, 630, "basil");
 		basil.setScale(0.1, 0.1);
-		basil.setInteractive().on('pointerup', () => {});
+		basil.setInteractive().on('pointerdown', () => this.mouseHandler(this.basil));
 
 		const rect3 = this.add.rectangle(985, 430, 20, 20, 0x808080, 1);
 		const whisked_eggs = this.add.image(720, 450, "whisked_eggs");
@@ -429,6 +429,7 @@ export default class Level1 extends Phaser.Scene {
 	create() {
 
 		this.editorCreate();
+	
 	}
 
 	/* END-USER-CODE */
