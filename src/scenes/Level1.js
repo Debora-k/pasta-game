@@ -186,9 +186,9 @@ export default class Level1 extends Phaser.Scene {
 		completeLevel.text = "Complete Fettuccine";
 		completeLevel.setStyle({"fontFamily": "PixelifySans-Regular", "fontSize": "58px"});
 
-		// waitingTime used in onEnd()
-		let waitingTime = 3;
-		
+		let waitingTime = 2;
+
+
 		knife.setInteractive().on('pointerdown', () => this.mouseHandler(this.knife));
 	
 			
@@ -346,10 +346,11 @@ export default class Level1 extends Phaser.Scene {
 			this.plank.setVisible(true);
 			this.completeLevel.setVisible(true);
 		} 
-		else {
+	}
+
+	notComplete () {
 			this.scene.stop();
 			this.scene.start('Level');
-		}
 	}
 
 	mouseHandler (clickedImage) {
@@ -409,7 +410,7 @@ export default class Level1 extends Phaser.Scene {
 			this.rect4.setFillStyle(0xff0000);
 			this.rect5.setFillStyle(0xff0000);
 			this.rect6.setFillStyle(0xff0000);
-			let delay = this.time.addEvent({delay:2000, callback: () => this.onEnd(), callbackScope:this, loop:true});
+			let delay = this.time.addEvent({delay:2000, callback: () => this.notComplete(), callbackScope:this, loop:true});
 			this.delay = delay;
 
 			this.addBackground.setVisible(true);
