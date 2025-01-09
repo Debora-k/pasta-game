@@ -1,6 +1,8 @@
 # Pasta Maker
 
-<img width="621" alt="Screenshot 2024-12-16 at 9 44 08 PM" src="https://github.com/user-attachments/assets/c78f46a9-ba33-4a1a-a402-59b9ce0e1310" />
+![Pasta Maker](https://github.com/user-attachments/assets/8be42e60-1418-4d0c-a716-d5225708f1c2)
+
+
 
 
 
